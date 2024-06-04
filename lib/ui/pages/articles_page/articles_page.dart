@@ -33,21 +33,25 @@ class ArticlesPage extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 color: context.themeColor.surface,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ArticlesPageArticleHeader(article: article),
-                    const SizedBox(height: 8),
-                    Text(
-                      article.title,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                child: SafeArea(
+                  top: false,
+                  bottom: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ArticlesPageArticleHeader(article: article),
+                      const SizedBox(height: 8),
+                      Text(
+                        article.title,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    ArticlesPageArticleFooter(article: article),
-                  ],
+                      const SizedBox(height: 8),
+                      ArticlesPageArticleFooter(article: article),
+                    ],
+                  ),
                 ),
               ),
             );
