@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/user_extension.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
 
@@ -19,8 +20,8 @@ class ArticlesPageArticleHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text.rich(TextSpan(
-              children: [
+            Text.rich(
+              TextSpan(children: [
                 TextSpan(
                   text: article.user.idAndName,
                   style: const TextStyle(decoration: TextDecoration.underline),
@@ -35,9 +36,19 @@ class ArticlesPageArticleHeader extends StatelessWidget {
                       ),
                     ),
                   ]),
-              ],
-            )),
-            Text(article.createdAt, style: const TextStyle(fontSize: 12)),
+              ]),
+              style: TextStyle(
+                color: context.themeColor.highEmphasis,
+                decorationColor: context.themeColor.highEmphasis,
+              ),
+            ),
+            Text(
+              article.createdAt,
+              style: TextStyle(
+                color: context.themeColor.mediumEmphasis,
+                fontSize: 12,
+              ),
+            ),
           ],
         ),
       ),
