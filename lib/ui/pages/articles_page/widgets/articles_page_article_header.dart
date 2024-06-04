@@ -20,28 +20,22 @@ class ArticlesPageArticleHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text.rich(
-              TextSpan(children: [
-                TextSpan(
-                  text: article.user.idAndName,
-                  style: const TextStyle(decoration: TextDecoration.underline),
-                ),
-                if (article.user.organization.isNotEmpty)
-                  TextSpan(children: [
-                    const TextSpan(text: ' in '),
-                    TextSpan(
-                      text: article.user.organization,
-                      style: const TextStyle(
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ]),
-              ]),
-              style: TextStyle(
-                color: context.themeColor.highEmphasis,
-                decorationColor: context.themeColor.highEmphasis,
+            Text.rich(TextSpan(children: [
+              TextSpan(
+                text: article.user.idAndName,
+                style: const TextStyle(decoration: TextDecoration.underline),
               ),
-            ),
+              if (article.user.organization.isNotEmpty)
+                TextSpan(children: [
+                  const TextSpan(text: ' in '),
+                  TextSpan(
+                    text: article.user.organization,
+                    style: const TextStyle(
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ]),
+            ])),
             Text(
               article.createdAt,
               style: TextStyle(

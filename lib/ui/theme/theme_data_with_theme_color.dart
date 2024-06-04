@@ -17,6 +17,12 @@ class ThemeDataWithThemeColor {
     return ThemeData(
       brightness: brightness,
       scaffoldBackgroundColor: themeColor.background,
+      textTheme: TextTheme(
+        bodyMedium: TextStyle(
+          color: themeColor.highEmphasis,
+          decorationColor: themeColor.highEmphasis,
+        ),
+      ),
     );
   }
 }

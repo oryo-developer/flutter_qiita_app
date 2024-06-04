@@ -33,8 +33,7 @@ class ArticlesPage extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   article.title,
-                  style: TextStyle(
-                    color: context.themeColor.highEmphasis,
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),

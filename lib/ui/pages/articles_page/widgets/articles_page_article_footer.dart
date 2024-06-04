@@ -39,10 +39,7 @@ class ArticlesPageArticleFooter extends StatelessWidget {
             colorFilter: context.themeColor.mediumEmphasis.filter,
           ),
           const SizedBox(width: 2),
-          Text(
-            article.likesCount.toString(),
-            style: TextStyle(color: context.themeColor.highEmphasis),
-          ),
+          Text(article.likesCount.toString()),
         ]),
       ],
     );
