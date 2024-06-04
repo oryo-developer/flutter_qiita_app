@@ -18,8 +18,11 @@ class $AssetsSvgsGen {
   /// File path: assets/svgs/like.svg
   SvgGenImage get like => const SvgGenImage('assets/svgs/like.svg');
 
+  /// File path: assets/svgs/logo.svg
+  SvgGenImage get logo => const SvgGenImage('assets/svgs/logo.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [like];
+  List<SvgGenImage> get values => [like, logo];
 }
 
 class Assets {
