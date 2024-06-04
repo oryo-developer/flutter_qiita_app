@@ -23,6 +23,13 @@ class ThemeDataWithThemeColor {
           decorationColor: themeColor.highEmphasis,
         ),
       ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: themeColor.surface,
+        elevation: 1,
+        scrolledUnderElevation: 1,
+        shadowColor: ThemeColor.black,
+        surfaceTintColor: ThemeColor.transparent,
+      ),
     );
   }
 }
