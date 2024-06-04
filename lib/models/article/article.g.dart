@@ -15,7 +15,6 @@ _$ArticleImpl _$$ArticleImplFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       url: json['url'] as String,
       user: User.fromJson(json['user'] as Map<String, dynamic>),
-      organizationUrlName: json['organization_url_name'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ArticleImplToJson(_$ArticleImpl instance) =>
@@ -27,5 +26,4 @@ Map<String, dynamic> _$$ArticleImplToJson(_$ArticleImpl instance) =>
       'title': instance.title,
       'url': instance.url,
       'user': instance.user,
-      'organization_url_name': instance.organizationUrlName,
     };

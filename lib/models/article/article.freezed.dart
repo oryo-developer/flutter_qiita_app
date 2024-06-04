@@ -28,7 +28,6 @@ mixin _$Article {
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
-  String get organizationUrlName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,8 +45,7 @@ abstract class $ArticleCopyWith<$Res> {
       @TagsConverter() List<String> tags,
       String title,
       String url,
-      User user,
-      String organizationUrlName});
+      User user});
 
   $UserCopyWith<$Res> get user;
 }
@@ -71,7 +69,6 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     Object? title = null,
     Object? url = null,
     Object? user = null,
-    Object? organizationUrlName = null,
   }) {
     return _then(_value.copyWith(
       createdAt: null == createdAt
@@ -98,10 +95,6 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      organizationUrlName: null == organizationUrlName
-          ? _value.organizationUrlName
-          : organizationUrlName // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 
@@ -127,8 +120,7 @@ abstract class _$$ArticleImplCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       @TagsConverter() List<String> tags,
       String title,
       String url,
-      User user,
-      String organizationUrlName});
+      User user});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -151,7 +143,6 @@ class __$$ArticleImplCopyWithImpl<$Res>
     Object? title = null,
     Object? url = null,
     Object? user = null,
-    Object? organizationUrlName = null,
   }) {
     return _then(_$ArticleImpl(
       createdAt: null == createdAt
@@ -178,10 +169,6 @@ class __$$ArticleImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      organizationUrlName: null == organizationUrlName
-          ? _value.organizationUrlName
-          : organizationUrlName // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -195,8 +182,7 @@ class _$ArticleImpl implements _Article {
       @TagsConverter() required final List<String> tags,
       required this.title,
       required this.url,
-      required this.user,
-      this.organizationUrlName = ''})
+      required this.user})
       : _tags = tags;
 
   factory _$ArticleImpl.fromJson(Map<String, dynamic> json) =>
@@ -222,13 +208,10 @@ class _$ArticleImpl implements _Article {
   final String url;
   @override
   final User user;
-  @override
-  @JsonKey()
-  final String organizationUrlName;
 
   @override
   String toString() {
-    return 'Article(createdAt: $createdAt, likesCount: $likesCount, tags: $tags, title: $title, url: $url, user: $user, organizationUrlName: $organizationUrlName)';
+    return 'Article(createdAt: $createdAt, likesCount: $likesCount, tags: $tags, title: $title, url: $url, user: $user)';
   }
 
   @override
@@ -243,22 +226,13 @@ class _$ArticleImpl implements _Article {
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.organizationUrlName, organizationUrlName) ||
-                other.organizationUrlName == organizationUrlName));
+            (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      createdAt,
-      likesCount,
-      const DeepCollectionEquality().hash(_tags),
-      title,
-      url,
-      user,
-      organizationUrlName);
+  int get hashCode => Object.hash(runtimeType, createdAt, likesCount,
+      const DeepCollectionEquality().hash(_tags), title, url, user);
 
   @JsonKey(ignore: true)
   @override
@@ -281,8 +255,7 @@ abstract class _Article implements Article {
       @TagsConverter() required final List<String> tags,
       required final String title,
       required final String url,
-      required final User user,
-      final String organizationUrlName}) = _$ArticleImpl;
+      required final User user}) = _$ArticleImpl;
 
   factory _Article.fromJson(Map<String, dynamic> json) = _$ArticleImpl.fromJson;
 
@@ -300,8 +273,6 @@ abstract class _Article implements Article {
   String get url;
   @override
   User get user;
-  @override
-  String get organizationUrlName;
   @override
   @JsonKey(ignore: true)
   _$$ArticleImplCopyWith<_$ArticleImpl> get copyWith =>
