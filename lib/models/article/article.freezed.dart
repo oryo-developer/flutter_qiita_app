@@ -28,7 +28,7 @@ mixin _$Article {
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
-  String? get organizationUrlName => throw _privateConstructorUsedError;
+  String get organizationUrlName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +47,7 @@ abstract class $ArticleCopyWith<$Res> {
       String title,
       String url,
       User user,
-      String? organizationUrlName});
+      String organizationUrlName});
 
   $UserCopyWith<$Res> get user;
 }
@@ -71,7 +71,7 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     Object? title = null,
     Object? url = null,
     Object? user = null,
-    Object? organizationUrlName = freezed,
+    Object? organizationUrlName = null,
   }) {
     return _then(_value.copyWith(
       createdAt: null == createdAt
@@ -98,10 +98,10 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      organizationUrlName: freezed == organizationUrlName
+      organizationUrlName: null == organizationUrlName
           ? _value.organizationUrlName
           : organizationUrlName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 
@@ -128,7 +128,7 @@ abstract class _$$ArticleImplCopyWith<$Res> implements $ArticleCopyWith<$Res> {
       String title,
       String url,
       User user,
-      String? organizationUrlName});
+      String organizationUrlName});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -151,7 +151,7 @@ class __$$ArticleImplCopyWithImpl<$Res>
     Object? title = null,
     Object? url = null,
     Object? user = null,
-    Object? organizationUrlName = freezed,
+    Object? organizationUrlName = null,
   }) {
     return _then(_$ArticleImpl(
       createdAt: null == createdAt
@@ -178,10 +178,10 @@ class __$$ArticleImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      organizationUrlName: freezed == organizationUrlName
+      organizationUrlName: null == organizationUrlName
           ? _value.organizationUrlName
           : organizationUrlName // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -196,7 +196,7 @@ class _$ArticleImpl implements _Article {
       required this.title,
       required this.url,
       required this.user,
-      this.organizationUrlName})
+      this.organizationUrlName = ''})
       : _tags = tags;
 
   factory _$ArticleImpl.fromJson(Map<String, dynamic> json) =>
@@ -223,7 +223,8 @@ class _$ArticleImpl implements _Article {
   @override
   final User user;
   @override
-  final String? organizationUrlName;
+  @JsonKey()
+  final String organizationUrlName;
 
   @override
   String toString() {
@@ -281,7 +282,7 @@ abstract class _Article implements Article {
       required final String title,
       required final String url,
       required final User user,
-      final String? organizationUrlName}) = _$ArticleImpl;
+      final String organizationUrlName}) = _$ArticleImpl;
 
   factory _Article.fromJson(Map<String, dynamic> json) = _$ArticleImpl.fromJson;
 
@@ -300,7 +301,7 @@ abstract class _Article implements Article {
   @override
   User get user;
   @override
-  String? get organizationUrlName;
+  String get organizationUrlName;
   @override
   @JsonKey(ignore: true)
   _$$ArticleImplCopyWith<_$ArticleImpl> get copyWith =>
