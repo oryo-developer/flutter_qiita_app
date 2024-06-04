@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/user_extension.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
-import 'package:flutter_qiita_app/ui/widgets/launch_url.dart';
+import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
 
 class ArticlesPageArticleHeader extends StatelessWidget {
   const ArticlesPageArticleHeader({super.key, required this.article});
@@ -13,7 +13,7 @@ class ArticlesPageArticleHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = article.user;
     return Row(children: [
-      LaunchUrl(
+      LaunchUrlButton(
         'https://qiita.com/${user.id}',
         child: CircleAvatar(
           foregroundImage: NetworkImage(user.profileImageUrl),
@@ -25,7 +25,7 @@ class ArticlesPageArticleHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LaunchUrl(
+            LaunchUrlButton(
               'https://qiita.com/${user.id}',
               child: Text(
                 user.idAndName,

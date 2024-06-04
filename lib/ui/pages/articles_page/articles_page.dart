@@ -4,7 +4,7 @@ import 'package:flutter_qiita_app/ui/pages/articles_page/articles_page_provider.
 import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_article_footer.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_article_header.dart';
 import 'package:flutter_qiita_app/ui/widgets/change_theme_mode_button.dart';
-import 'package:flutter_qiita_app/ui/widgets/launch_url.dart';
+import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
 import 'package:flutter_qiita_app/ui/widgets/logo.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -34,7 +34,7 @@ class ArticlesPage extends StatelessWidget {
             itemCount: articles.length,
             itemBuilder: (_, index) {
               final article = articles[index];
-              return LaunchUrl(
+              return LaunchUrlButton(
                 article.url,
                 child: Container(
                   padding: const EdgeInsets.all(16),
