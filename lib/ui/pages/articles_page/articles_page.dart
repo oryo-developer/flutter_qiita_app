@@ -23,42 +23,45 @@ class ArticlesPage extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
-        return ListView.separated(
-          padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
-          itemCount: articles.length,
-          itemBuilder: (_, index) {
-            final article = articles[index];
-            return LaunchUrl(
-              article.url,
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                color: context.themeColor.surface,
-                child: SafeArea(
-                  top: false,
-                  bottom: false,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ArticlesPageArticleHeader(article: article),
-                      const SizedBox(height: 8),
-                      Text(
-                        article.title,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+        return RefreshIndicator(
+          onRefresh: ref.read(articlesPageProvider.notifier).fetchArticles,
+          child: ListView.separated(
+            padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
+            itemCount: articles.length,
+            itemBuilder: (_, index) {
+              final article = articles[index];
+              return LaunchUrl(
+                article.url,
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  color: context.themeColor.surface,
+                  child: SafeArea(
+                    top: false,
+                    bottom: false,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ArticlesPageArticleHeader(article: article),
+                        const SizedBox(height: 8),
+                        Text(
+                          article.title,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      ArticlesPageArticleFooter(article: article),
-                    ],
+                        const SizedBox(height: 8),
+                        ArticlesPageArticleFooter(article: article),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 16);
-          },
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const SizedBox(height: 16);
+            },
+          ),
         );
       }),
     );
