@@ -3,6 +3,7 @@ import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/color_extension.dart';
 import 'package:flutter_qiita_app/gen/assets.gen.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
+import 'package:flutter_qiita_app/ui/widgets/launch_url.dart';
 
 class ArticlesPageArticleFooter extends StatelessWidget {
   const ArticlesPageArticleFooter({super.key, required this.article});
@@ -18,15 +19,18 @@ class ArticlesPageArticleFooter extends StatelessWidget {
           spacing: 4,
           runSpacing: 4,
           children: article.tags.map((tag) {
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6),
-              decoration: BoxDecoration(
-                color: context.themeColor.surfaceVariant,
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Text(
-                tag,
-                style: TextStyle(color: context.themeColor.mediumEmphasis),
+            return LaunchUrl(
+              'https://qiita.com/tags/$tag',
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                decoration: BoxDecoration(
+                  color: context.themeColor.surfaceVariant,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  tag,
+                  style: TextStyle(color: context.themeColor.mediumEmphasis),
+                ),
               ),
             );
           }).toList(),
