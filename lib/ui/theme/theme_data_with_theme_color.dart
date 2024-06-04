@@ -30,7 +30,7 @@ class ThemeDataWithThemeColor {
         backgroundColor: themeColor.surface,
         elevation: 1,
         scrolledUnderElevation: 1,
-        shadowColor: ThemeColor.black,
+        shadowColor: themeColor.divider,
         surfaceTintColor: ThemeColor.transparent,
       ),
     );

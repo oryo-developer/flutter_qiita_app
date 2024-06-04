@@ -18,6 +18,7 @@ abstract class ThemeColor {
   Color get surfaceVariant;
   Color get highEmphasis;
   Color get mediumEmphasis;
+  Color get divider;
 
   static ThemeColor themeColor({required Brightness brightness}) {
     return switch (brightness) {

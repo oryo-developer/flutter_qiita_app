@@ -26,4 +26,9 @@ class DarkThemeColor extends ThemeColor {
   Color get mediumEmphasis {
     return ThemeColor.white.withOpacity(0.65);
   }
+
+  @override
+  Color get divider {
+    return ThemeColor.white.withOpacity(0.2);
+  }
 }
