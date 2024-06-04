@@ -19,10 +19,17 @@ abstract class ThemeColor {
   Color get highEmphasis;
   Color get mediumEmphasis;
 
-  static ThemeColor brightness({required Brightness brightness}) {
+  static ThemeColor themeColor({required Brightness brightness}) {
     return switch (brightness) {
       Brightness.light => LightThemeColor(),
       Brightness.dark => DarkThemeColor(),
+    };
+  }
+
+  static ColorScheme scheme({required Brightness brightness}) {
+    return switch (brightness) {
+      Brightness.light => const ColorScheme.light(),
+      Brightness.dark => const ColorScheme.dark(),
     };
   }
 }
