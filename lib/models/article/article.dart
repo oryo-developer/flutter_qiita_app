@@ -16,6 +16,7 @@ class Article with _$Article {
     required String title,
     required String url,
     required User user,
+    String? organizationUrlName,
   }) = _Article;
 
   factory Article.fromJson(Json json) => _$ArticleFromJson(json);
