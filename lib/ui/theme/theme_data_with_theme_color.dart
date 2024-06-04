@@ -13,9 +13,12 @@ class ThemeDataWithThemeColor {
   }
 
   static ThemeData _themeData({required Brightness brightness}) {
-    final themeColor = ThemeColor.brightness(brightness: brightness);
+    final themeColor = ThemeColor.themeColor(brightness: brightness);
+    final colorScheme = ThemeColor.scheme(brightness: brightness);
     return ThemeData(
       brightness: brightness,
+      canvasColor: themeColor.surfaceVariant,
+      colorScheme: colorScheme.copyWith(primary: ThemeColor.green60),
       scaffoldBackgroundColor: themeColor.background,
       textTheme: TextTheme(
         bodyMedium: TextStyle(
