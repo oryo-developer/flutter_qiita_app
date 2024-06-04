@@ -9,7 +9,6 @@ class User with _$User {
   const factory User({
     required String id,
     @Default('') String name,
-    @Default('') String organization,
     required String profileImageUrl,
   }) = _User;
 
