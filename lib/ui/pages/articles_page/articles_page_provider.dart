@@ -6,15 +6,16 @@ import 'package:flutter_qiita_app/repositories/article_repository/article_reposi
 import 'package:flutter_qiita_app/ui/pages/articles_page/articles_page_state/articles_page_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-typedef ArticlesPageProvider
-    = StateNotifierProvider<ArticlesPageNotifier, ArticlesPageState>;
+typedef State = ArticlesPageState;
 
-final articlesPageProvider = ArticlesPageProvider((ref) {
-  return ArticlesPageNotifier();
-});
+final articlesPageProvider = StateNotifierProvider<ArticlesPageNotifier, State>(
+  (ref) {
+    return ArticlesPageNotifier();
+  },
+);
 
-class ArticlesPageNotifier extends StateNotifier<ArticlesPageState> {
-  ArticlesPageNotifier() : super(const ArticlesPageState()) {
+class ArticlesPageNotifier extends StateNotifier<State> {
+  ArticlesPageNotifier() : super(const State()) {
     fetchFirstPageArticles();
   }
 
