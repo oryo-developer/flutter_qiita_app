@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
+import 'package:flutter_qiita_app/extensions/listenable_extension.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/articles_page_provider.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_article_footer.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_article_header.dart';
@@ -18,8 +20,8 @@ class ArticlesPage extends StatelessWidget {
         title: const Logo(),
         actions: const [ChangeThemeModeButton()],
       ),
-      body: Consumer(builder: (context, ref, child) {
-        final articles = ref.watch(articlesPageProvider.select((state) {
+      body: HookConsumer(builder: (context, ref, child) {
+        final (articles) = ref.watch(articlesPageProvider.select((state) {
           return state.articles;
         }));
 
@@ -27,12 +29,38 @@ class ArticlesPage extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
 
+        final isNextPageArticlesFetching = ref.watch(
+          articlesPageProvider.select((state) {
+            return state.isNextPageArticlesFetching;
+          }),
+        );
+
+        final controller = useScrollController()
+          ..addAutoDisposeListener((controller) async {
+            final maxScrollExtent = controller.position.maxScrollExtent;
+            final scrollRatio = controller.offset / maxScrollExtent;
+            if (1 <= scrollRatio) {
+              await ref
+                  .read(articlesPageProvider.notifier)
+                  .fetchNextPageArticles();
+            }
+          });
+
         return RefreshIndicator(
-          onRefresh: ref.read(articlesPageProvider.notifier).fetchArticles,
+          onRefresh:
+              ref.read(articlesPageProvider.notifier).fetchFirstPageArticles,
           child: ListView.separated(
+            controller: controller,
             padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
-            itemCount: articles.length,
+            itemCount: articles.length + 1,
             itemBuilder: (_, index) {
+              if (index == articles.length) {
+                return Visibility(
+                  visible: isNextPageArticlesFetching,
+                  child: const Center(child: CircularProgressIndicator()),
+                );
+              }
+
               final article = articles[index];
               return LaunchUrlButton(
                 article.url,
@@ -63,6 +91,10 @@ class ArticlesPage extends StatelessWidget {
               );
             },
             separatorBuilder: (context, index) {
+              if (index == articles.length - 1) {
+                return SizedBox(height: isNextPageArticlesFetching ? 16 : 0);
+              }
+
               return const SizedBox(height: 16);
             },
           ),
