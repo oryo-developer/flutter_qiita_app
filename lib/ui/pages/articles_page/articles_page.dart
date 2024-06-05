@@ -62,7 +62,7 @@ class ArticlesPage extends StatelessWidget {
               }
 
               return LaunchUrlButton(
-                articles[index].url,
+                urlString: articles[index].url,
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   color: context.themeColor.surface,

@@ -20,7 +20,7 @@ class ArticlesPageArticleFooter extends StatelessWidget {
           runSpacing: 4,
           children: article.tags.map((tag) {
             return LaunchUrlButton(
-              'https://qiita.com/tags/$tag',
+              urlString: 'https://qiita.com/tags/$tag',
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6),
                 decoration: BoxDecoration(

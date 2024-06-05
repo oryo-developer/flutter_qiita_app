@@ -14,7 +14,7 @@ class ArticlesPageArticleHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(children: [
       LaunchUrlButton(
-        'https://qiita.com/${article.user.id}',
+        urlString: 'https://qiita.com/${article.user.id}',
         child: CircleAvatar(
           backgroundColor: ThemeColor.green60,
           foregroundImage: NetworkImage(article.user.profileImageUrl),
@@ -27,7 +27,7 @@ class ArticlesPageArticleHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LaunchUrlButton(
-              'https://qiita.com/${article.user.id}',
+              urlString: 'https://qiita.com/${article.user.id}',
               child: Text(
                 article.user.idAndName,
                 style: const TextStyle(decoration: TextDecoration.underline),
