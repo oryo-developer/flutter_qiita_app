@@ -39,7 +39,7 @@ class ArticlesPage extends StatelessWidget {
           ..addAutoDisposeListener((controller) async {
             final maxScrollExtent = controller.position.maxScrollExtent;
             final scrollRatio = controller.offset / maxScrollExtent;
-            if (1 <= scrollRatio) {
+            if (0.8 <= scrollRatio) {
               await ref
                   .read(articlesPageProvider.notifier)
                   .fetchNextPageArticles();
