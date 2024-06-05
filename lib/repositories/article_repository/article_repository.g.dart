@@ -19,7 +19,7 @@ class _ArticleRepository implements ArticleRepository {
   String? baseUrl;
 
   @override
-  Future<List<Article>> fetchArticles({
+  Future<HttpResponse<List<Article>>> fetchArticles({
     required int page,
     String? query,
   }) async {
@@ -31,8 +31,8 @@ class _ArticleRepository implements ArticleRepository {
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Article>>(Options(
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<HttpResponse<List<Article>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -51,7 +51,8 @@ class _ArticleRepository implements ArticleRepository {
     var value = _result.data!
         .map((dynamic i) => Article.fromJson(i as Map<String, dynamic>))
         .toList();
-    return value;
+    final httpResponse = HttpResponse(value, _result);
+    return httpResponse;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

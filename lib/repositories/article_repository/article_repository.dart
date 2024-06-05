@@ -9,7 +9,7 @@ abstract class ArticleRepository {
   factory ArticleRepository(Dio dio, {String? baseUrl}) = _ArticleRepository;
 
   @GET('/items')
-  Future<List<Article>> fetchArticles({
+  Future<HttpResponse<List<Article>>> fetchArticles({
     @Query('page') required int page,
     @Query('query') String? query,
   });
