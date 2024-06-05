@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ArticlesPageState {
   int get page => throw _privateConstructorUsedError;
+  int? get maxPage => throw _privateConstructorUsedError;
+  bool get isNextPageArticlesFetching => throw _privateConstructorUsedError;
   List<Article>? get articles => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +32,11 @@ abstract class $ArticlesPageStateCopyWith<$Res> {
           ArticlesPageState value, $Res Function(ArticlesPageState) then) =
       _$ArticlesPageStateCopyWithImpl<$Res, ArticlesPageState>;
   @useResult
-  $Res call({int page, List<Article>? articles});
+  $Res call(
+      {int page,
+      int? maxPage,
+      bool isNextPageArticlesFetching,
+      List<Article>? articles});
 }
 
 /// @nodoc
@@ -47,6 +53,8 @@ class _$ArticlesPageStateCopyWithImpl<$Res, $Val extends ArticlesPageState>
   @override
   $Res call({
     Object? page = null,
+    Object? maxPage = freezed,
+    Object? isNextPageArticlesFetching = null,
     Object? articles = freezed,
   }) {
     return _then(_value.copyWith(
@@ -54,6 +62,14 @@ class _$ArticlesPageStateCopyWithImpl<$Res, $Val extends ArticlesPageState>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      maxPage: freezed == maxPage
+          ? _value.maxPage
+          : maxPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isNextPageArticlesFetching: null == isNextPageArticlesFetching
+          ? _value.isNextPageArticlesFetching
+          : isNextPageArticlesFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
       articles: freezed == articles
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
@@ -70,7 +86,11 @@ abstract class _$$ArticlesPageStateImplCopyWith<$Res>
       __$$ArticlesPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int page, List<Article>? articles});
+  $Res call(
+      {int page,
+      int? maxPage,
+      bool isNextPageArticlesFetching,
+      List<Article>? articles});
 }
 
 /// @nodoc
@@ -85,6 +105,8 @@ class __$$ArticlesPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? page = null,
+    Object? maxPage = freezed,
+    Object? isNextPageArticlesFetching = null,
     Object? articles = freezed,
   }) {
     return _then(_$ArticlesPageStateImpl(
@@ -92,6 +114,14 @@ class __$$ArticlesPageStateImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      maxPage: freezed == maxPage
+          ? _value.maxPage
+          : maxPage // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isNextPageArticlesFetching: null == isNextPageArticlesFetching
+          ? _value.isNextPageArticlesFetching
+          : isNextPageArticlesFetching // ignore: cast_nullable_to_non_nullable
+              as bool,
       articles: freezed == articles
           ? _value._articles
           : articles // ignore: cast_nullable_to_non_nullable
@@ -103,12 +133,21 @@ class __$$ArticlesPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ArticlesPageStateImpl implements _ArticlesPageState {
-  const _$ArticlesPageStateImpl({this.page = 1, final List<Article>? articles})
+  const _$ArticlesPageStateImpl(
+      {this.page = 1,
+      this.maxPage,
+      this.isNextPageArticlesFetching = false,
+      final List<Article>? articles})
       : _articles = articles;
 
   @override
   @JsonKey()
   final int page;
+  @override
+  final int? maxPage;
+  @override
+  @JsonKey()
+  final bool isNextPageArticlesFetching;
   final List<Article>? _articles;
   @override
   List<Article>? get articles {
@@ -121,7 +160,7 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
 
   @override
   String toString() {
-    return 'ArticlesPageState(page: $page, articles: $articles)';
+    return 'ArticlesPageState(page: $page, maxPage: $maxPage, isNextPageArticlesFetching: $isNextPageArticlesFetching, articles: $articles)';
   }
 
   @override
@@ -130,12 +169,21 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
         (other.runtimeType == runtimeType &&
             other is _$ArticlesPageStateImpl &&
             (identical(other.page, page) || other.page == page) &&
+            (identical(other.maxPage, maxPage) || other.maxPage == maxPage) &&
+            (identical(other.isNextPageArticlesFetching,
+                    isNextPageArticlesFetching) ||
+                other.isNextPageArticlesFetching ==
+                    isNextPageArticlesFetching) &&
             const DeepCollectionEquality().equals(other._articles, _articles));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, page, const DeepCollectionEquality().hash(_articles));
+      runtimeType,
+      page,
+      maxPage,
+      isNextPageArticlesFetching,
+      const DeepCollectionEquality().hash(_articles));
 
   @JsonKey(ignore: true)
   @override
@@ -148,10 +196,16 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
 abstract class _ArticlesPageState implements ArticlesPageState {
   const factory _ArticlesPageState(
       {final int page,
+      final int? maxPage,
+      final bool isNextPageArticlesFetching,
       final List<Article>? articles}) = _$ArticlesPageStateImpl;
 
   @override
   int get page;
+  @override
+  int? get maxPage;
+  @override
+  bool get isNextPageArticlesFetching;
   @override
   List<Article>? get articles;
   @override
