@@ -61,9 +61,8 @@ class ArticlesPage extends StatelessWidget {
                 );
               }
 
-              final article = articles[index];
               return LaunchUrlButton(
-                article.url,
+                articles[index].url,
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   color: context.themeColor.surface,
@@ -73,17 +72,17 @@ class ArticlesPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ArticlesPageArticleHeader(article: article),
+                        ArticlesPageArticleHeader(article: articles[index]),
                         const SizedBox(height: 8),
                         Text(
-                          article.title,
+                          articles[index].title,
                           style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         const SizedBox(height: 8),
-                        ArticlesPageArticleFooter(article: article),
+                        ArticlesPageArticleFooter(article: articles[index]),
                       ],
                     ),
                   ),
