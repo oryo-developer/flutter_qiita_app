@@ -24,7 +24,7 @@ class ArticlesPageNotifier extends StateNotifier<ArticlesPageState> {
     final response = await _articleRepository.fetchArticles(page: page);
     final headers = response.response.headers;
     final totalCount = int.parse(headers.value('Total-Count') ?? '0');
-    final maxPage = min(5, (totalCount / 20).ceil());
+    final maxPage = min(100, (totalCount / 20).ceil());
     state = state.copyWith(page: page + 1, maxPage: maxPage);
     return response.data;
   }
