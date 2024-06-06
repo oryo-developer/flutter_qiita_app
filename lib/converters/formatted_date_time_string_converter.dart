@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
-typedef Converter = JsonConverter<String, String>;
+typedef _Converter = JsonConverter<String, String>;
 
-class FormattedDateTimeStringConverter implements Converter {
+class FormattedDateTimeStringConverter implements _Converter {
   const FormattedDateTimeStringConverter();
 
   @override
