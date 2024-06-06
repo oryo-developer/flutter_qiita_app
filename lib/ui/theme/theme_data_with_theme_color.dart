@@ -33,6 +33,21 @@ class ThemeDataWithThemeColor {
         shadowColor: themeColor.divider,
         surfaceTintColor: ThemeColor.transparent,
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: themeColor.disabled),
+        prefixIconColor: themeColor.disabled,
+        suffixIconColor: themeColor.disabled,
+        filled: true,
+        fillColor: themeColor.surfaceVariant,
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: ThemeColor.transparent, width: 2),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: ThemeColor.green60, width: 2),
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
     );
   }
 }
