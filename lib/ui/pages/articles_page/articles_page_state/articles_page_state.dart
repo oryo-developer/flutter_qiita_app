@@ -7,6 +7,7 @@ part 'articles_page_state.freezed.dart';
 class ArticlesPageState with _$ArticlesPageState {
   const factory ArticlesPageState({
     @Default(1) int page,
+    String? query,
     int? maxPage,
     @Default(false) bool isNextPageArticlesFetching,
     List<Article>? articles,

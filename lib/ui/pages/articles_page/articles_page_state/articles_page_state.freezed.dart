@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ArticlesPageState {
   int get page => throw _privateConstructorUsedError;
+  String? get query => throw _privateConstructorUsedError;
   int? get maxPage => throw _privateConstructorUsedError;
   bool get isNextPageArticlesFetching => throw _privateConstructorUsedError;
   List<Article>? get articles => throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ abstract class $ArticlesPageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {int page,
+      String? query,
       int? maxPage,
       bool isNextPageArticlesFetching,
       List<Article>? articles});
@@ -53,6 +55,7 @@ class _$ArticlesPageStateCopyWithImpl<$Res, $Val extends ArticlesPageState>
   @override
   $Res call({
     Object? page = null,
+    Object? query = freezed,
     Object? maxPage = freezed,
     Object? isNextPageArticlesFetching = null,
     Object? articles = freezed,
@@ -62,6 +65,10 @@ class _$ArticlesPageStateCopyWithImpl<$Res, $Val extends ArticlesPageState>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      query: freezed == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String?,
       maxPage: freezed == maxPage
           ? _value.maxPage
           : maxPage // ignore: cast_nullable_to_non_nullable
@@ -88,6 +95,7 @@ abstract class _$$ArticlesPageStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {int page,
+      String? query,
       int? maxPage,
       bool isNextPageArticlesFetching,
       List<Article>? articles});
@@ -105,6 +113,7 @@ class __$$ArticlesPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? page = null,
+    Object? query = freezed,
     Object? maxPage = freezed,
     Object? isNextPageArticlesFetching = null,
     Object? articles = freezed,
@@ -114,6 +123,10 @@ class __$$ArticlesPageStateImplCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
+      query: freezed == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String?,
       maxPage: freezed == maxPage
           ? _value.maxPage
           : maxPage // ignore: cast_nullable_to_non_nullable
@@ -135,6 +148,7 @@ class __$$ArticlesPageStateImplCopyWithImpl<$Res>
 class _$ArticlesPageStateImpl implements _ArticlesPageState {
   const _$ArticlesPageStateImpl(
       {this.page = 1,
+      this.query,
       this.maxPage,
       this.isNextPageArticlesFetching = false,
       final List<Article>? articles})
@@ -143,6 +157,8 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
   @override
   @JsonKey()
   final int page;
+  @override
+  final String? query;
   @override
   final int? maxPage;
   @override
@@ -160,7 +176,7 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
 
   @override
   String toString() {
-    return 'ArticlesPageState(page: $page, maxPage: $maxPage, isNextPageArticlesFetching: $isNextPageArticlesFetching, articles: $articles)';
+    return 'ArticlesPageState(page: $page, query: $query, maxPage: $maxPage, isNextPageArticlesFetching: $isNextPageArticlesFetching, articles: $articles)';
   }
 
   @override
@@ -169,6 +185,7 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
         (other.runtimeType == runtimeType &&
             other is _$ArticlesPageStateImpl &&
             (identical(other.page, page) || other.page == page) &&
+            (identical(other.query, query) || other.query == query) &&
             (identical(other.maxPage, maxPage) || other.maxPage == maxPage) &&
             (identical(other.isNextPageArticlesFetching,
                     isNextPageArticlesFetching) ||
@@ -181,6 +198,7 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
   int get hashCode => Object.hash(
       runtimeType,
       page,
+      query,
       maxPage,
       isNextPageArticlesFetching,
       const DeepCollectionEquality().hash(_articles));
@@ -196,12 +214,15 @@ class _$ArticlesPageStateImpl implements _ArticlesPageState {
 abstract class _ArticlesPageState implements ArticlesPageState {
   const factory _ArticlesPageState(
       {final int page,
+      final String? query,
       final int? maxPage,
       final bool isNextPageArticlesFetching,
       final List<Article>? articles}) = _$ArticlesPageStateImpl;
 
   @override
   int get page;
+  @override
+  String? get query;
   @override
   int? get maxPage;
   @override
