@@ -21,24 +21,30 @@ class ArticlesPageNotifier extends StateNotifier<State> {
 
   final _articleRepository = ArticleRepository(dio);
 
-  Future<List<Article>> _fetchArticles({required int page}) async {
-    final response = await _articleRepository.fetchArticles(page: page);
+  Future<List<Article>> _fetchArticles({
+    required int page,
+    String? query,
+  }) async {
+    final response = await _articleRepository.fetchArticles(
+      page: page,
+      query: query,
+    );
     final headers = response.response.headers;
     final totalCount = int.parse(headers.value('Total-Count') ?? '0');
     final maxPage = min(100, (totalCount / 20).ceil());
-    state = state.copyWith(page: page + 1, maxPage: maxPage);
+    state = state.copyWith(page: page + 1, query: query, maxPage: maxPage);
     return response.data;
   }
 
-  Future<void> fetchFirstPageArticles() async {
-    final articles = await _fetchArticles(page: 1);
+  Future<void> fetchFirstPageArticles({String? query}) async {
+    final articles = await _fetchArticles(page: 1, query: query ?? state.query);
     state = state.copyWith(articles: articles);
   }
 
   Future<void> fetchNextPageArticles() async {
     if (state.isNextPageArticlesFetching || state.maxPage! < state.page) return;
     state = state.copyWith(isNextPageArticlesFetching: true);
-    final articles = await _fetchArticles(page: state.page);
+    final articles = await _fetchArticles(page: state.page, query: state.query);
     state = state.copyWith(
       isNextPageArticlesFetching: false,
       articles: state.articles! + articles,
