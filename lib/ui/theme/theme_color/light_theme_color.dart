@@ -31,4 +31,9 @@ class LightThemeColor extends ThemeColor {
   Color get divider {
     return ThemeColor.black.withOpacity(0.12);
   }
+
+  @override
+  Color get disabled {
+    return ThemeColor.black.withOpacity(0.38);
+  }
 }
