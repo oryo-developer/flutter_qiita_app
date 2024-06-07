@@ -48,7 +48,6 @@ class ArticlesPage extends StatelessWidget {
           child: ListView.separated(
             controller: controller,
             padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
-            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             itemCount: articles.length + 1,
             itemBuilder: (_, index) {
               if (index == articles.length) {
