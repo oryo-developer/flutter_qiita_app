@@ -8,8 +8,8 @@ part of 'article.dart';
 
 _$ArticleImpl _$$ArticleImplFromJson(Map<String, dynamic> json) =>
     _$ArticleImpl(
-      createdAt: const FormattedDateTimeStringConverter()
-          .fromJson(json['created_at'] as String),
+      createdAt:
+          const CreatedAtConverter().fromJson(json['created_at'] as String),
       likesCount: (json['likes_count'] as num).toInt(),
       tags: const TagsConverter().fromJson(json['tags'] as List),
       title: json['title'] as String,
@@ -19,8 +19,7 @@ _$ArticleImpl _$$ArticleImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ArticleImplToJson(_$ArticleImpl instance) =>
     <String, dynamic>{
-      'created_at':
-          const FormattedDateTimeStringConverter().toJson(instance.createdAt),
+      'created_at': const CreatedAtConverter().toJson(instance.createdAt),
       'likes_count': instance.likesCount,
       'tags': const TagsConverter().toJson(instance.tags),
       'title': instance.title,

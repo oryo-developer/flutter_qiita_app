@@ -20,7 +20,7 @@ Article _$ArticleFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Article {
-  @FormattedDateTimeStringConverter()
+  @CreatedAtConverter()
   String get createdAt => throw _privateConstructorUsedError;
   int get likesCount => throw _privateConstructorUsedError;
   @TagsConverter()
@@ -40,7 +40,7 @@ abstract class $ArticleCopyWith<$Res> {
       _$ArticleCopyWithImpl<$Res, Article>;
   @useResult
   $Res call(
-      {@FormattedDateTimeStringConverter() String createdAt,
+      {@CreatedAtConverter() String createdAt,
       int likesCount,
       @TagsConverter() List<String> tags,
       String title,
@@ -115,7 +115,7 @@ abstract class _$$ArticleImplCopyWith<$Res> implements $ArticleCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@FormattedDateTimeStringConverter() String createdAt,
+      {@CreatedAtConverter() String createdAt,
       int likesCount,
       @TagsConverter() List<String> tags,
       String title,
@@ -177,7 +177,7 @@ class __$$ArticleImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ArticleImpl implements _Article {
   const _$ArticleImpl(
-      {@FormattedDateTimeStringConverter() required this.createdAt,
+      {@CreatedAtConverter() required this.createdAt,
       required this.likesCount,
       @TagsConverter() required final List<String> tags,
       required this.title,
@@ -189,7 +189,7 @@ class _$ArticleImpl implements _Article {
       _$$ArticleImplFromJson(json);
 
   @override
-  @FormattedDateTimeStringConverter()
+  @CreatedAtConverter()
   final String createdAt;
   @override
   final int likesCount;
@@ -250,7 +250,7 @@ class _$ArticleImpl implements _Article {
 
 abstract class _Article implements Article {
   const factory _Article(
-      {@FormattedDateTimeStringConverter() required final String createdAt,
+      {@CreatedAtConverter() required final String createdAt,
       required final int likesCount,
       @TagsConverter() required final List<String> tags,
       required final String title,
@@ -260,7 +260,7 @@ abstract class _Article implements Article {
   factory _Article.fromJson(Map<String, dynamic> json) = _$ArticleImpl.fromJson;
 
   @override
-  @FormattedDateTimeStringConverter()
+  @CreatedAtConverter()
   String get createdAt;
   @override
   int get likesCount;
