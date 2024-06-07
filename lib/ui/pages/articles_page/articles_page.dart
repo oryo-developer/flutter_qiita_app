@@ -3,10 +3,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/listenable_extension.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/articles_page_provider.dart';
-import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_app_bar/articles_page_app_bar.dart';
+import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_app_bar_bottom.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_article/articles_page_article_footer.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/widgets/articles_page_article/articles_page_article_header.dart';
+import 'package:flutter_qiita_app/ui/widgets/change_theme_mode_button.dart';
 import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
+import 'package:flutter_qiita_app/ui/widgets/logo.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ArticlesPage extends StatelessWidget {
@@ -23,7 +25,11 @@ class ArticlesPage extends StatelessWidget {
         }),
       ],
       child: Scaffold(
-        appBar: const ArticlesPageAppBar(),
+        appBar: AppBar(
+          title: const Logo(),
+          actions: const [ChangeThemeModeButton(), SizedBox(width: 16)],
+          bottom: const ArticlesPageAppBarBottom(),
+        ),
         body: HookConsumer(builder: (context, ref, child) {
           final (articles) = ref.watch(articlesPageProvider.select((state) {
             return state.articles;

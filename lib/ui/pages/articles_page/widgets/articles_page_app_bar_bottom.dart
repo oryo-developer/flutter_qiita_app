@@ -13,7 +13,7 @@ class ArticlesPageAppBarBottom extends HookConsumerWidget
 
   @override
   Size get preferredSize {
-    return const Size.fromHeight(kToolbarHeight);
+    return const Size.fromHeight(kToolbarHeight + 16);
   }
 
   @override
