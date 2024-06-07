@@ -6,16 +6,15 @@ final _themeModeRepository = ThemeModeRepository();
 
 final themeModeProvider = StateNotifierProvider<ThemeModeNotifier, ThemeMode>(
   (ref) {
-    final themeMode = _themeModeRepository.get();
-    return ThemeModeNotifier(themeMode);
+    return ThemeModeNotifier();
   },
 );
 
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
-  ThemeModeNotifier(super._state);
+  ThemeModeNotifier() : super(_themeModeRepository.get());
 
   Future<void> change() async {
-    final index = (state.index + 1) % 3;
+    final index = (state.index + 1) % ThemeMode.values.length;
     final themeMode = ThemeMode.values[index];
     final success = await _themeModeRepository.set(themeMode: themeMode);
     if (success) state = themeMode;
