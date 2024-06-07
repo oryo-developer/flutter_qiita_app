@@ -22,13 +22,11 @@ class ArticlesPageAppBarBottom extends HookConsumerWidget
       return state.query;
     }));
     final controller = useTextEditingController(text: query);
-
     final (focusNode, hasPrimaryFocus) = useFocusNode().listenableSelector(
       (focusNode) {
         return focusNode.hasPrimaryFocus;
       },
     );
-
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
       child: Row(children: [
