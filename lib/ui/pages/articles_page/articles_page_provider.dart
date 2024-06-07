@@ -6,45 +6,41 @@ import 'package:flutter_qiita_app/repositories/article_repository/article_reposi
 import 'package:flutter_qiita_app/ui/pages/articles_page/articles_page_state/articles_page_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-typedef State = ArticlesPageState;
+final articlesPageProvider =
+    StateNotifierProvider<ArticlesPageNotifier, ArticlesPageState>((ref) {
+  return throw UnimplementedError();
+});
 
-final articlesPageProvider = StateNotifierProvider<ArticlesPageNotifier, State>(
-  (ref) {
-    return ArticlesPageNotifier();
-  },
-);
-
-class ArticlesPageNotifier extends StateNotifier<State> {
-  ArticlesPageNotifier() : super(const State()) {
+class ArticlesPageNotifier extends StateNotifier<ArticlesPageState> {
+  ArticlesPageNotifier({
+    String? query,
+  }) : super(ArticlesPageState(query: query)) {
     fetchFirstPageArticles();
   }
 
   final _articleRepository = ArticleRepository(dio);
 
-  Future<List<Article>> _fetchArticles({
-    required int page,
-    String? query,
-  }) async {
+  Future<List<Article>> _fetchArticles({required int page}) async {
     final response = await _articleRepository.fetchArticles(
       page: page,
-      query: query,
+      query: state.query,
     );
     final headers = response.response.headers;
     final totalCount = int.parse(headers.value('Total-Count') ?? '0');
     final maxPage = min(100, (totalCount / 20).ceil());
-    state = state.copyWith(page: page + 1, query: query, maxPage: maxPage);
+    state = state.copyWith(page: page + 1, maxPage: maxPage);
     return response.data;
   }
 
   Future<void> fetchFirstPageArticles({String? query}) async {
-    final articles = await _fetchArticles(page: 1, query: query ?? state.query);
+    final articles = await _fetchArticles(page: 1);
     state = state.copyWith(articles: articles);
   }
 
   Future<void> fetchNextPageArticles() async {
     if (state.isNextPageArticlesFetching || state.maxPage! < state.page) return;
     state = state.copyWith(isNextPageArticlesFetching: true);
-    final articles = await _fetchArticles(page: state.page, query: state.query);
+    final articles = await _fetchArticles(page: state.page);
     state = state.copyWith(
       isNextPageArticlesFetching: false,
       articles: state.articles! + articles,

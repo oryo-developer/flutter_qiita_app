@@ -10,87 +10,96 @@ import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ArticlesPage extends StatelessWidget {
-  const ArticlesPage({super.key});
+  const ArticlesPage({super.key, this.query});
+
+  final String? query;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const ArticlesPageAppBar(),
-      body: HookConsumer(builder: (context, ref, child) {
-        final (articles) = ref.watch(articlesPageProvider.select((state) {
-          return state.articles;
-        }));
+    return ProviderScope(
+      overrides: [
+        articlesPageProvider.overrideWith((ref) {
+          return ArticlesPageNotifier(query: query);
+        }),
+      ],
+      child: Scaffold(
+        appBar: const ArticlesPageAppBar(),
+        body: HookConsumer(builder: (context, ref, child) {
+          final (articles) = ref.watch(articlesPageProvider.select((state) {
+            return state.articles;
+          }));
 
-        if (articles == null) {
-          return const Center(child: CircularProgressIndicator());
-        }
+          if (articles == null) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-        final isNextPageArticlesFetching = ref.watch(
-          articlesPageProvider.select((state) {
-            return state.isNextPageArticlesFetching;
-          }),
-        );
+          final isNextPageArticlesFetching = ref.watch(
+            articlesPageProvider.select((state) {
+              return state.isNextPageArticlesFetching;
+            }),
+          );
 
-        final controller = useScrollController()
-          ..autoDisposeAddListener((controller) async {
-            final maxScrollExtent = controller.position.maxScrollExtent;
-            final scrollRatio = controller.offset / maxScrollExtent;
-            if (0.8 <= scrollRatio) {
-              await ref
-                  .read(articlesPageProvider.notifier)
-                  .fetchNextPageArticles();
-            }
-          });
-
-        return RefreshIndicator(
-          onRefresh:
-              ref.read(articlesPageProvider.notifier).fetchFirstPageArticles,
-          child: ListView.separated(
-            controller: controller,
-            padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
-            itemCount: articles.length + 1,
-            itemBuilder: (_, index) {
-              if (index == articles.length) {
-                return Visibility(
-                  visible: isNextPageArticlesFetching,
-                  child: const Center(child: CircularProgressIndicator()),
-                );
+          final controller = useScrollController()
+            ..autoDisposeAddListener((controller) async {
+              final maxScrollExtent = controller.position.maxScrollExtent;
+              final scrollRatio = controller.offset / maxScrollExtent;
+              if (0.8 <= scrollRatio) {
+                await ref
+                    .read(articlesPageProvider.notifier)
+                    .fetchNextPageArticles();
               }
+            });
 
-              return LaunchUrlButton(
-                urlString: articles[index].url,
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  color: context.themeColor.surface,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ArticlesPageArticleHeader(article: articles[index]),
-                      const SizedBox(height: 8),
-                      Text(
-                        articles[index].title,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+          return RefreshIndicator(
+            onRefresh:
+                ref.read(articlesPageProvider.notifier).fetchFirstPageArticles,
+            child: ListView.separated(
+              controller: controller,
+              padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
+              itemCount: articles.length + 1,
+              itemBuilder: (_, index) {
+                if (index == articles.length) {
+                  return Visibility(
+                    visible: isNextPageArticlesFetching,
+                    child: const Center(child: CircularProgressIndicator()),
+                  );
+                }
+
+                return LaunchUrlButton(
+                  urlString: articles[index].url,
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    color: context.themeColor.surface,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ArticlesPageArticleHeader(article: articles[index]),
+                        const SizedBox(height: 8),
+                        Text(
+                          articles[index].title,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 8),
-                      ArticlesPageArticleFooter(article: articles[index]),
-                    ],
+                        const SizedBox(height: 8),
+                        ArticlesPageArticleFooter(article: articles[index]),
+                      ],
+                    ),
                   ),
-                ),
-              );
-            },
-            separatorBuilder: (context, index) {
-              if (index == articles.length - 1) {
-                return SizedBox(height: isNextPageArticlesFetching ? 16 : 0);
-              }
+                );
+              },
+              separatorBuilder: (context, index) {
+                if (index == articles.length - 1) {
+                  return SizedBox(height: isNextPageArticlesFetching ? 16 : 0);
+                }
 
-              return const SizedBox(height: 16);
-            },
-          ),
-        );
-      }),
+                return const SizedBox(height: 16);
+              },
+            ),
+          );
+        }),
+      ),
     );
   }
 }
