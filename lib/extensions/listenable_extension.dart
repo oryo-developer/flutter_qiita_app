@@ -14,4 +14,11 @@ extension ListenableExtension<T extends Listenable> on T {
       };
     }, const []);
   }
+
+  (T, R) listenableSelector<R>(R Function(T listenable) selector) {
+    final selectorResult = useListenableSelector(this, () {
+      return selector(this);
+    });
+    return (this, selectorResult);
+  }
 }
