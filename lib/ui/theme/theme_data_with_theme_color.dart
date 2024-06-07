@@ -47,6 +47,7 @@ class ThemeDataWithThemeColor {
         scrolledUnderElevation: 1,
         shadowColor: themeColor.divider,
         surfaceTintColor: ThemeColor.transparent,
+        centerTitle: true,
       ),
     );
   }
