@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_qiita_app/ui/theme/theme_color/theme_color.dart';
+part of 'theme_color.dart';
 
 class LightThemeColor extends ThemeColor {
+  const LightThemeColor() : super._();
+
   @override
   Color get background {
     return ThemeColor.gray10;

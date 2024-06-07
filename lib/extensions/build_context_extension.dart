@@ -8,6 +8,6 @@ extension BuildContextExtension on BuildContext {
 
   ThemeColor get themeColor {
     final brightness = Theme.of(this).brightness;
-    return ThemeColor.themeColor(brightness: brightness);
+    return ThemeColor(brightness: brightness);
   }
 }
