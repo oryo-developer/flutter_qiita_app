@@ -16,8 +16,9 @@ class ArticlesPageAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       title: const Logo(),
-      actions: const [ChangeThemeModeButton()],
+      actions: const [ChangeThemeModeButton(), SizedBox(width: 16)],
       bottom: const ArticlesPageSearchTextField(),
+      centerTitle: true,
     );
   }
 }
