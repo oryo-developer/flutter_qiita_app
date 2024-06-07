@@ -6,6 +6,12 @@ extension BuildContextExtension on BuildContext {
     return MediaQuery.paddingOf(this);
   }
 
+  Future<T?> push<T>({required Widget widget}) {
+    return Navigator.push(this, MaterialPageRoute(builder: (context) {
+      return widget;
+    }));
+  }
+
   ThemeColor get themeColor {
     final brightness = Theme.of(this).brightness;
     return ThemeColor(brightness: brightness);
