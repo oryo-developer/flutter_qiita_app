@@ -32,7 +32,7 @@ class ArticlesPage extends StatelessWidget {
         );
 
         final controller = useScrollController()
-          ..addAutoDisposeListener((controller) async {
+          ..autoDisposeAddListener((controller) async {
             final maxScrollExtent = controller.position.maxScrollExtent;
             final scrollRatio = controller.offset / maxScrollExtent;
             if (0.8 <= scrollRatio) {
