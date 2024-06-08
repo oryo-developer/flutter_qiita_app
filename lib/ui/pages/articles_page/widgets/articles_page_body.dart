@@ -34,7 +34,10 @@ class ArticlesPageBody extends HookConsumerWidget {
       onRefresh: ref.read(articlesPageProvider.notifier).fetchFirstPageArticles,
       child: ListView.separated(
         controller: controller,
-        padding: EdgeInsets.only(top: 24, bottom: context.padding.bottom),
+        padding: EdgeInsets.only(
+          top: 24,
+          bottom: context.padding(minBottom: 24).bottom,
+        ),
         itemBuilder: (_, index) {
           if (index == articles.length) {
             return Visibility(
