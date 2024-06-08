@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/listenable_extension.dart';
 import 'package:flutter_qiita_app/ui/pages/articles_page/articles_page_provider.dart';
@@ -9,7 +8,9 @@ import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ArticlesPageBody extends HookConsumerWidget {
-  const ArticlesPageBody({super.key});
+  const ArticlesPageBody({super.key, required this.controller});
+
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,12 +25,11 @@ class ArticlesPageBody extends HookConsumerWidget {
         return state.isNextPageArticlesFetching;
       }),
     );
-    final controller = useScrollController()
-      ..autoDisposeAddListener((controller) async {
-        if (0.9 <= controller.offset / controller.position.maxScrollExtent) {
-          await ref.read(articlesPageProvider.notifier).fetchNextPageArticles();
-        }
-      });
+    controller.autoDisposeAddListener((controller) async {
+      if (0.9 <= controller.offset / controller.position.maxScrollExtent) {
+        await ref.read(articlesPageProvider.notifier).fetchNextPageArticles();
+      }
+    });
     return RefreshIndicator(
       onRefresh: ref.read(articlesPageProvider.notifier).fetchFirstPageArticles,
       child: ListView.separated(
