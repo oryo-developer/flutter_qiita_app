@@ -1,4 +1,4 @@
-import 'package:flutter_qiita_app/json.dart';
+import 'package:flutter_qiita_app/main.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';

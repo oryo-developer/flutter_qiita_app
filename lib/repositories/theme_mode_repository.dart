@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_qiita_app/shared_preferences.dart';
+import 'package:flutter_qiita_app/main.dart';
 
 class ThemeModeRepository {
   final _key = 'THEME_MODE_INDEX';

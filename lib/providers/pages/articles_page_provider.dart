@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter_qiita_app/dio.dart';
+import 'package:flutter_qiita_app/main.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
 import 'package:flutter_qiita_app/repositories/article_repository/article_repository.dart';
 import 'package:flutter_qiita_app/states/pages/articles_page_state/articles_page_state.dart';
