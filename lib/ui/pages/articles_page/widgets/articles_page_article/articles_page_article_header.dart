@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
-import 'package:flutter_qiita_app/extensions/user_extension.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
 import 'package:flutter_qiita_app/ui/theme/theme_color/theme_color.dart';
 import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';

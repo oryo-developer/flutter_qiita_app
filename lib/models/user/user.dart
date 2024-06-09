@@ -6,6 +6,8 @@ part 'user.g.dart';
 
 @freezed
 class User with _$User {
+  const User._();
+
   const factory User({
     required String id,
     @Default('') String name,
@@ -13,4 +15,10 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Json json) => _$UserFromJson(json);
+
+  String get idAndName {
+    final id = '@${this.id}';
+    if (name.isEmpty) return id;
+    return '$id ($name)';
+  }
 }
