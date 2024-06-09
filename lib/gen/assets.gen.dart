@@ -15,6 +15,10 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsSvgsGen {
   const $AssetsSvgsGen();
 
+  /// File path: assets/svgs/arrow_insert.svg
+  SvgGenImage get arrowInsert =>
+      const SvgGenImage('assets/svgs/arrow_insert.svg');
+
   /// File path: assets/svgs/like.svg
   SvgGenImage get like => const SvgGenImage('assets/svgs/like.svg');
 
@@ -22,7 +26,7 @@ class $AssetsSvgsGen {
   SvgGenImage get logo => const SvgGenImage('assets/svgs/logo.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [like, logo];
+  List<SvgGenImage> get values => [arrowInsert, like, logo];
 }
 
 class Assets {
