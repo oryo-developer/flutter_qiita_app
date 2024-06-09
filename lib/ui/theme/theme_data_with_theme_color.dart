@@ -43,8 +43,6 @@ class ThemeDataWithThemeColor {
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: themeColor.surface,
-        elevation: 1,
-        scrolledUnderElevation: 1,
         shadowColor: themeColor.divider,
         surfaceTintColor: ThemeColor.transparent,
         centerTitle: true,
