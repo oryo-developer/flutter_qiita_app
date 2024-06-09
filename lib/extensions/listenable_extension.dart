@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 extension ListenableExtension<T extends Listenable> on T {
-  void autoDisposeAddListener(void Function(T listenable) listener) {
+  T autoDisposeListener(void Function(T) listener) {
     useEffect(() {
       void listenerThis() {
         listener(this);
@@ -13,9 +13,10 @@ extension ListenableExtension<T extends Listenable> on T {
         removeListener(listenerThis);
       };
     }, const []);
+    return this;
   }
 
-  (T, R) listenableSelector<R>(R Function(T listenable) selector) {
+  (T, R) listenableSelector<R>(R Function(T) selector) {
     final selectorResult = useListenableSelector(this, () {
       return selector(this);
     });

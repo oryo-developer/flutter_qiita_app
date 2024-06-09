@@ -38,7 +38,7 @@ class ArticlesPageBody extends HookConsumerWidget {
         return state.isNextPageArticlesFetching;
       }),
     );
-    scrollController.autoDisposeAddListener((controller) async {
+    scrollController.autoDisposeListener((controller) async {
       if (0.9 <= controller.offset / controller.position.maxScrollExtent) {
         await ref.read(articlesPageProvider.notifier).fetchNextPageArticles();
       }
