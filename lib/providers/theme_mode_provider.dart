@@ -14,9 +14,7 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
   ThemeModeNotifier() : super(_themeModeService.get());
 
   Future<void> change() async {
-    final index = (state.index + 1) % ThemeMode.values.length;
-    final themeMode = ThemeMode.values[index];
-    final success = await _themeModeService.set(themeMode: themeMode);
-    if (success) state = themeMode;
+    final success = await _themeModeService.change(themeMode: state);
+    if (success) state = _themeModeService.get();
   }
 }

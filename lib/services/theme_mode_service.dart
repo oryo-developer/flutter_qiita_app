@@ -9,8 +9,8 @@ class ThemeModeService {
     return ThemeMode.values[index];
   }
 
-  Future<bool> set({required ThemeMode themeMode}) {
-    final index = themeMode.index;
+  Future<bool> change({required ThemeMode themeMode}) {
+    final index = (themeMode.index + 1) % ThemeMode.values.length;
     return _themeModeIndexRepository.set(index: index);
   }
 }
