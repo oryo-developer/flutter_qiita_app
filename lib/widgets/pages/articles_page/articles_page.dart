@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_qiita_app/extensions/theme_mode_extension.dart';
 import 'package:flutter_qiita_app/providers/pages/articles_page_provider.dart';
-import 'package:flutter_qiita_app/widgets/change_theme_mode_button.dart';
+import 'package:flutter_qiita_app/providers/theme_mode_provider.dart';
 import 'package:flutter_qiita_app/widgets/logo.dart';
 import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_app_bar_bottom.dart';
 import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_body.dart';
@@ -36,7 +37,13 @@ class ArticlesPage extends StatelessWidget {
               },
               child: const Logo(),
             ),
-            actions: const [ChangeThemeModeButton(), SizedBox(width: 16)],
+            actions: [
+              GestureDetector(
+                onTap: ref.read(themeModeProvider.notifier).change,
+                child: Icon(ref.watch(themeModeProvider).icon),
+              ),
+              const SizedBox(width: 16)
+            ],
             bottom: ArticlesPageAppBarBottom(
               textEditingController: textEditingController,
               focusNode: focusNode,
