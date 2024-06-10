@@ -32,7 +32,7 @@ class ThemeDataWithThemeColor {
         ),
       ),
       brightness: brightness,
-      canvasColor: themeColor.surfaceVariant,
+      canvasColor: themeColor.surface,
       colorScheme: brightness.colorScheme.copyWith(
         primary: ThemeColor.green60,
         primaryContainer: ThemeColor.green60,
