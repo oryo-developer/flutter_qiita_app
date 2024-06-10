@@ -4,9 +4,11 @@ import 'package:flutter_qiita_app/states/pages/articles_page_state/articles_page
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final articlesPageProvider =
-    StateNotifierProvider<ArticlesPageNotifier, ArticlesPageState>((ref) {
-  throw UnimplementedError();
-});
+    AutoDisposeStateNotifierProvider<ArticlesPageNotifier, ArticlesPageState>(
+  (ref) {
+    throw UnimplementedError();
+  },
+);
 
 class ArticlesPageNotifier extends StateNotifier<ArticlesPageState> {
   ArticlesPageNotifier({
