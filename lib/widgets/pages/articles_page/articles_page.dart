@@ -48,7 +48,7 @@ class ArticlesPage extends StatelessWidget {
                 onTap: ref.read(themeModeProvider.notifier).change,
                 child: Icon(ref.watch(themeModeProvider).icon),
               ),
-              const SizedBox(width: 16)
+              const SizedBox(width: 16),
             ],
             bottom: ArticlesPageAppBarBottom(
               textEditingController: textEditingController,
