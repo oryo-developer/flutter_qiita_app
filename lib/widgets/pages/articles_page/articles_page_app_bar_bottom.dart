@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/providers/search_histories_provider.dart';
-import 'package:flutter_qiita_app/ui/widgets/pages/articles_page/articles_page.dart';
-import 'package:flutter_qiita_app/ui/widgets/qiita_text_field.dart';
+import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page.dart';
+import 'package:flutter_qiita_app/widgets/qiita_text_field.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ArticlesPageAppBarBottom extends HookConsumerWidget

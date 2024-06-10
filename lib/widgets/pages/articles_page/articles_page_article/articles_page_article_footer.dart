@@ -3,7 +3,7 @@ import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/color_extension.dart';
 import 'package:flutter_qiita_app/gen/assets.gen.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
-import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
+import 'package:flutter_qiita_app/widgets/launch_url_button.dart';
 
 class ArticlesPageArticleFooter extends StatelessWidget {
   const ArticlesPageArticleFooter({super.key, required this.article});

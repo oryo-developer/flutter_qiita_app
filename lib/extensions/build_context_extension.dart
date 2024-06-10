@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_qiita_app/ui/theme/theme_color/theme_color.dart';
+import 'package:flutter_qiita_app/theme/theme_color/theme_color.dart';
 
 extension BuildContextExtension on BuildContext {
   ThemeColor get themeColor {

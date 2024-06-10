@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qiita_app/extensions/brightness_extension.dart';
-import 'package:flutter_qiita_app/ui/theme/theme_color/theme_color.dart';
+import 'package:flutter_qiita_app/theme/theme_color/theme_color.dart';
 
 class ThemeDataWithThemeColor {
   ThemeDataWithThemeColor._();

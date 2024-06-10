@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qiita_app/extensions/color_extension.dart';
 import 'package:flutter_qiita_app/gen/assets.gen.dart';
-import 'package:flutter_qiita_app/ui/theme/theme_color/theme_color.dart';
+import 'package:flutter_qiita_app/theme/theme_color/theme_color.dart';
 
 class Logo extends StatelessWidget {
   const Logo({super.key});

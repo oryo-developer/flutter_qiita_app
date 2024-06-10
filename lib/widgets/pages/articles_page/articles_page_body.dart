@@ -6,11 +6,11 @@ import 'package:flutter_qiita_app/extensions/listenable_extension.dart';
 import 'package:flutter_qiita_app/gen/assets.gen.dart';
 import 'package:flutter_qiita_app/providers/pages/articles_page_provider.dart';
 import 'package:flutter_qiita_app/providers/search_histories_provider.dart';
-import 'package:flutter_qiita_app/ui/theme/theme_color/theme_color.dart';
-import 'package:flutter_qiita_app/ui/widgets/launch_url_button.dart';
-import 'package:flutter_qiita_app/ui/widgets/pages/articles_page/articles_page.dart';
-import 'package:flutter_qiita_app/ui/widgets/pages/articles_page/articles_page_article/articles_page_article_footer.dart';
-import 'package:flutter_qiita_app/ui/widgets/pages/articles_page/articles_page_article/articles_page_article_header.dart';
+import 'package:flutter_qiita_app/theme/theme_color/theme_color.dart';
+import 'package:flutter_qiita_app/widgets/launch_url_button.dart';
+import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page.dart';
+import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_article/articles_page_article_footer.dart';
+import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_article/articles_page_article_header.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ArticlesPageBody extends HookConsumerWidget {
