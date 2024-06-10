@@ -11,10 +11,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class SearchHistoryListView extends HookConsumerWidget {
   const SearchHistoryListView({
     super.key,
+    required this.scrollController,
     required this.textEditingController,
     required this.focusNode,
   });
 
+  final ScrollController scrollController;
   final TextEditingController textEditingController;
   final FocusNode focusNode;
 
@@ -32,6 +34,7 @@ class SearchHistoryListView extends HookConsumerWidget {
     return ColoredBox(
       color: context.themeColor.background,
       child: ListView.builder(
+        controller: scrollController,
         itemBuilder: (context, index) {
           final searchHistory = searchHistories[index];
           return Dismissible(

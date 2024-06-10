@@ -24,7 +24,8 @@ class ArticlesPage extends StatelessWidget {
         }),
       ],
       child: HookConsumer(builder: (context, ref, child) {
-        final scrollController = useScrollController();
+        final articleListViewScrollController = useScrollController();
+        final searchHistoryListViewScrollController = useScrollController();
         final textEditingController = useTextEditingController(text: query);
         final (focusNode, hasPrimaryFocus) = useFocusNode().listenableSelector(
           (focusNode) {
@@ -35,7 +36,9 @@ class ArticlesPage extends StatelessWidget {
           appBar: AppBar(
             title: GestureDetector(
               onTap: () async {
-                if (hasPrimaryFocus) return;
+                final scrollController = hasPrimaryFocus
+                    ? searchHistoryListViewScrollController
+                    : articleListViewScrollController;
                 await scrollController.animateTo(
                   0,
                   duration: const Duration(milliseconds: 250),
@@ -57,9 +60,12 @@ class ArticlesPage extends StatelessWidget {
             ),
           ),
           body: Stack(children: [
-            ArticlesPageArticleListView(scrollController: scrollController),
+            ArticlesPageArticleListView(
+              scrollController: articleListViewScrollController,
+            ),
             if (hasPrimaryFocus)
               SearchHistoryListView(
+                scrollController: searchHistoryListViewScrollController,
                 textEditingController: textEditingController,
                 focusNode: focusNode,
               ),
