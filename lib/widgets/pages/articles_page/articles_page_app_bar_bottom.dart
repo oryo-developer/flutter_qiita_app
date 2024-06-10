@@ -51,13 +51,7 @@ class ArticlesPageAppBarBottom extends HookConsumerWidget
             padding: const EdgeInsets.only(left: 16),
             child: GestureDetector(
               onTap: focusNode.unfocus,
-              child: const Text(
-                'キャンセル',
-                style: TextStyle(
-                  fontSize: 16,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
+              child: const Icon(Icons.keyboard_hide),
             ),
           ),
       ]),
