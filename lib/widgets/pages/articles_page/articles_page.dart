@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_qiita_app/extensions/listenable_extension.dart';
 import 'package:flutter_qiita_app/extensions/theme_mode_extension.dart';
 import 'package:flutter_qiita_app/providers/pages/articles_page_provider.dart';
 import 'package:flutter_qiita_app/providers/theme_mode_provider.dart';
@@ -24,15 +25,20 @@ class ArticlesPage extends StatelessWidget {
       child: HookConsumer(builder: (context, ref, child) {
         final scrollController = useScrollController();
         final textEditingController = useTextEditingController(text: query);
-        final focusNode = useFocusNode();
+        final (focusNode, hasPrimaryFocus) = useFocusNode().listenableSelector(
+          (focusNode) {
+            return focusNode.hasPrimaryFocus;
+          },
+        );
         return Scaffold(
           appBar: AppBar(
             title: GestureDetector(
               onTap: () async {
+                if (hasPrimaryFocus) return;
                 await scrollController.animateTo(
                   0,
                   duration: const Duration(milliseconds: 250),
-                  curve: Curves.linear,
+                  curve: Curves.easeOut,
                 );
               },
               child: const Logo(),
