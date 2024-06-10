@@ -1,6 +1,6 @@
 import 'package:flutter_qiita_app/converters/created_at_converter.dart';
 import 'package:flutter_qiita_app/converters/tags_converter.dart';
-import 'package:flutter_qiita_app/main.dart';
+import 'package:flutter_qiita_app/json.dart';
 import 'package:flutter_qiita_app/models/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

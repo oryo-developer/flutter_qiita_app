@@ -1,4 +1,4 @@
-import 'package:flutter_qiita_app/main.dart';
+import 'package:flutter_qiita_app/shared_preferences.dart';
 
 class SearchHistoriesRepository {
   final _key = 'SEARCH_HISTORIES';

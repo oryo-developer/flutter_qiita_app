@@ -1,5 +1,5 @@
+import 'package:flutter_qiita_app/dio.dart';
 import 'package:flutter_qiita_app/extensions/http_response_extension.dart';
-import 'package:flutter_qiita_app/main.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
 import 'package:flutter_qiita_app/repositories/article_repository/article_repository.dart';
 
