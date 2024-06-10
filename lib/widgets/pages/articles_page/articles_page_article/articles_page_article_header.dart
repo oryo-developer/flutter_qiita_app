@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
-import 'package:flutter_qiita_app/theme/theme_color/theme_color.dart';
 import 'package:flutter_qiita_app/widgets/launch_url_button.dart';
 
 class ArticlesPageArticleHeader extends StatelessWidget {
@@ -15,7 +14,6 @@ class ArticlesPageArticleHeader extends StatelessWidget {
       LaunchUrlButton(
         urlString: 'https://qiita.com/${article.user.id}',
         child: CircleAvatar(
-          backgroundColor: ThemeColor.green60,
           foregroundImage: NetworkImage(article.user.profileImageUrl),
           radius: 16,
         ),

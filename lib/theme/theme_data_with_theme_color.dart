@@ -33,9 +33,14 @@ class ThemeDataWithThemeColor {
       ),
       brightness: brightness,
       canvasColor: themeColor.surfaceVariant,
-      colorScheme: brightness.colorScheme.copyWith(primary: ThemeColor.green60),
+      colorScheme: brightness.colorScheme.copyWith(
+        primary: ThemeColor.green60,
+        primaryContainer: ThemeColor.green60,
+      ),
       scaffoldBackgroundColor: themeColor.background,
+      iconTheme: IconThemeData(color: themeColor.mediumEmphasis),
       textTheme: TextTheme(
+        bodyLarge: TextStyle(color: themeColor.highEmphasis),
         bodyMedium: TextStyle(
           color: themeColor.highEmphasis,
           decorationColor: themeColor.highEmphasis,
@@ -45,7 +50,11 @@ class ThemeDataWithThemeColor {
         backgroundColor: themeColor.surface,
         shadowColor: themeColor.divider,
         surfaceTintColor: ThemeColor.transparent,
+        iconTheme: IconThemeData(color: themeColor.mediumEmphasis),
         centerTitle: true,
+      ),
+      textSelectionTheme: TextSelectionThemeData(
+        cursorColor: themeColor.highEmphasis,
       ),
     );
   }

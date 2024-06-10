@@ -20,21 +20,21 @@ class DarkThemeColor extends ThemeColor {
 
   @override
   Color get highEmphasis {
-    return ThemeColor.white.withOpacity(0.92);
+    return ThemeColor.white92;
   }
 
   @override
   Color get mediumEmphasis {
-    return ThemeColor.white.withOpacity(0.65);
+    return ThemeColor.white65;
   }
 
   @override
   Color get divider {
-    return ThemeColor.white.withOpacity(0.2);
+    return ThemeColor.white20;
   }
 
   @override
   Color get disabled {
-    return ThemeColor.white.withOpacity(0.43);
+    return ThemeColor.white43;
   }
 }

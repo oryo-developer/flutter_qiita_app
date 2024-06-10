@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_qiita_app/extensions/build_context_extension.dart';
 import 'package:flutter_qiita_app/extensions/listenable_extension.dart';
 
 class QiitaTextField extends HookWidget {
@@ -49,10 +48,8 @@ class QiitaTextField extends HookWidget {
               ),
       ),
       textInputAction: textInputAction,
-      style: TextStyle(color: context.themeColor.highEmphasis),
       onSubmitted: onSubmitted,
       cursorWidth: 1,
-      cursorColor: context.themeColor.highEmphasis,
     );
   }
 }

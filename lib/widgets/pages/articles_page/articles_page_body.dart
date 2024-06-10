@@ -116,7 +116,7 @@ class ArticlesPageBody extends HookConsumerWidget {
                   color: Colors.red,
                   child: Icon(
                     Icons.delete,
-                    color: ThemeColor.white.withOpacity(0.65),
+                    color: ThemeColor.white65,
                   ),
                 ),
                 onDismissed: (direction) async {
@@ -146,11 +146,7 @@ class ArticlesPageBody extends HookConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(children: [
-                          Icon(
-                            Icons.history,
-                            size: 16,
-                            color: context.themeColor.mediumEmphasis,
-                          ),
+                          const Icon(Icons.history, size: 16),
                           const SizedBox(width: 8),
                           Text(searchHistory),
                         ]),
