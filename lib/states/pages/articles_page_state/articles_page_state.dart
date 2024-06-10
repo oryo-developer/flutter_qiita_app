@@ -9,7 +9,7 @@ class ArticlesPageState with _$ArticlesPageState {
     @Default(1) int page,
     String? query,
     int? maxPage,
-    @Default(false) bool isNextPageArticlesFetching,
+    @Default(false) bool isFetchingNextPageArticles,
     List<Article>? articles,
   }) = _ArticlesPageState;
 }

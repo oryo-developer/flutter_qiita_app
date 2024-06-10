@@ -33,9 +33,9 @@ class ArticlesPageBody extends HookConsumerWidget {
     if (articles == null) {
       return const Center(child: CircularProgressIndicator());
     }
-    final isNextPageArticlesFetching = ref.watch(
+    final isFetchingNextPageArticles = ref.watch(
       articlesPageProvider.select((state) {
-        return state.isNextPageArticlesFetching;
+        return state.isFetchingNextPageArticles;
       }),
     );
     scrollController.autoDisposeListener((controller) async {
@@ -65,7 +65,7 @@ class ArticlesPageBody extends HookConsumerWidget {
           itemBuilder: (_, index) {
             if (index == articles.length) {
               return Visibility(
-                visible: isNextPageArticlesFetching,
+                visible: isFetchingNextPageArticles,
                 child: const Center(child: CircularProgressIndicator()),
               );
             }
@@ -94,11 +94,9 @@ class ArticlesPageBody extends HookConsumerWidget {
             );
           },
           separatorBuilder: (context, index) {
+            final isLast = index == articles.length - 1;
             return SizedBox(
-              height:
-                  index == articles.length - 1 && !isNextPageArticlesFetching
-                      ? 0
-                      : 16,
+              height: isLast && !isFetchingNextPageArticles ? 0 : 16,
             );
           },
           itemCount: articles.length + 1,
