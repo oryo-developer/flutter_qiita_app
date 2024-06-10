@@ -61,6 +61,7 @@ class ArticlesPage extends StatelessWidget {
             if (hasPrimaryFocus)
               SearchHistoryListView(
                 textEditingController: textEditingController,
+                focusNode: focusNode,
               ),
           ]),
         );
