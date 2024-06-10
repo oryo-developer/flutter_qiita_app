@@ -33,10 +33,7 @@ class ArticlesPageArticleListItemHeader extends StatelessWidget {
           children: [
             LaunchUrlButton(
               urlString: 'https://qiita.com/${article.user.id}',
-              child: Text(
-                article.user.idAndName,
-                style: const TextStyle(decoration: TextDecoration.underline),
-              ),
+              child: Text(article.user.idAndName),
             ),
             Text(
               article.createdAt,

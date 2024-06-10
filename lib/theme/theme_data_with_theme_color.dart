@@ -41,10 +41,7 @@ class ThemeDataWithThemeColor {
       iconTheme: IconThemeData(color: themeColor.mediumEmphasis),
       textTheme: TextTheme(
         bodyLarge: TextStyle(color: themeColor.highEmphasis),
-        bodyMedium: TextStyle(
-          color: themeColor.highEmphasis,
-          decorationColor: themeColor.highEmphasis,
-        ),
+        bodyMedium: TextStyle(color: themeColor.highEmphasis),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: themeColor.surface,

@@ -29,11 +29,7 @@ class ArticlesPageArticleListItemFooter extends StatelessWidget {
                 ),
                 child: Text(
                   tag,
-                  style: TextStyle(
-                    color: context.themeColor.mediumEmphasis,
-                    decoration: TextDecoration.underline,
-                    decorationColor: context.themeColor.mediumEmphasis,
-                  ),
+                  style: TextStyle(color: context.themeColor.mediumEmphasis),
                 ),
               ),
             );
