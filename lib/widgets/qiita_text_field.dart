@@ -48,7 +48,12 @@ class QiitaTextField extends HookWidget {
               ),
       ),
       textInputAction: textInputAction,
-      onSubmitted: onSubmitted,
+      onSubmitted: (value) {
+        if (onSubmitted == null) return;
+        final trimmedValue = value.trim();
+        if (trimmedValue.isEmpty) return finalFocusNode.requestFocus();
+        onSubmitted!(trimmedValue);
+      },
       cursorWidth: 1,
     );
   }
