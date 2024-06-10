@@ -39,7 +39,7 @@ class ArticlesPageArticleListView extends HookConsumerWidget {
           top: 24,
           bottom: context.padding(minBottom: 24).bottom,
         ),
-        itemBuilder: (_, index) {
+        itemBuilder: (context, index) {
           if (index == articles.length) {
             return Visibility(
               visible: isFetchingNextPageArticles,
