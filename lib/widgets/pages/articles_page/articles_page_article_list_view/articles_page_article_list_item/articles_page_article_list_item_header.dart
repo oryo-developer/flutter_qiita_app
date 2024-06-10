@@ -5,8 +5,8 @@ import 'package:flutter_qiita_app/gen/assets.gen.dart';
 import 'package:flutter_qiita_app/models/article/article.dart';
 import 'package:flutter_qiita_app/widgets/launch_url_button.dart';
 
-class ArticlesPageArticleHeader extends StatelessWidget {
-  const ArticlesPageArticleHeader({super.key, required this.article});
+class ArticlesPageArticleListItemHeader extends StatelessWidget {
+  const ArticlesPageArticleListItemHeader({super.key, required this.article});
 
   final Article article;
 

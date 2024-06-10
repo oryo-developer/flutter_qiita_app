@@ -6,7 +6,8 @@ import 'package:flutter_qiita_app/providers/pages/articles_page_provider.dart';
 import 'package:flutter_qiita_app/providers/theme_mode_provider.dart';
 import 'package:flutter_qiita_app/widgets/logo.dart';
 import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_app_bar_bottom.dart';
-import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_body.dart';
+import 'package:flutter_qiita_app/widgets/pages/articles_page/articles_page_article_list_view/articles_page_article_list_view.dart';
+import 'package:flutter_qiita_app/widgets/search_history_list_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ArticlesPage extends StatelessWidget {
@@ -55,11 +56,13 @@ class ArticlesPage extends StatelessWidget {
               focusNode: focusNode,
             ),
           ),
-          body: ArticlesPageBody(
-            scrollController: scrollController,
-            textEditingController: textEditingController,
-            focusNode: focusNode,
-          ),
+          body: Stack(children: [
+            ArticlesPageArticleListView(scrollController: scrollController),
+            if (hasPrimaryFocus)
+              SearchHistoryListView(
+                textEditingController: textEditingController,
+              ),
+          ]),
         );
       }),
     );
